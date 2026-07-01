@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Lipsa Sahoo | Oracle BRM Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0041c8",
+                        "secondary": "#5f5e5e",
+                        "surface": "#f6faff",
+                        "tertiary-fixed": "#e1e3e4",
+                        "surface-bright": "#f6faff",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "outline": "#737688",
+                        "inverse-surface": "#293138",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#e9f2fb",
+                        "tertiary-container": "#666869",
+                        "background": "#f6faff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#474646",
+                        "outline-variant": "#c3c5d9",
+                        "surface-container-high": "#e0e9f2",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dce1ff",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#dbe4ed",
+                        "surface-tint": "#004dea",
+                        "surface-dim": "#d2dbe4",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-primary-fixed-variant": "#0039b3",
+                        "on-background": "#141d23",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#434656",
+                        "surface-container": "#e6eff8",
+                        "on-surface": "#141d23",
+                        "surface-container-low": "#ecf5fe",
+                        "primary-container": "#0055ff",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#e3e6ff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-variant": "#dbe4ed",
+                        "secondary-container": "#e5e2e1",
+                        "inverse-primary": "#b6c4ff",
+                        "tertiary": "#4e5051",
+                        "on-primary-fixed": "#001551",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "store-android": "#34a853",
+                        "store-ios": "#007aff",
+                        "store-web": "#f59e0b",
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px",
+                    },
+                    spacing: {
+                        "section-padding-mobile": "64px",
+                        "container-max": "1200px",
+                        "stack-lg": "32px",
+                        "section-padding-desktop": "120px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                    },
+                    fontFamily: {
+                        "display": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"],
+                        "body-lg": ['"Source Serif 4"'],
+                        "body-md": ['"Source Serif 4"'],
+                    },
+                    fontSize: {
+                        "display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "display-mobile": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        @media print {
+            .reveal-on-scroll { opacity: 1; transform: none; }
+            nav { display: none; }
+            section { padding-top: 32px !important; padding-bottom: 32px !important; }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+
+<!-- ========== NAVIGATION ========== -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 glass-nav shadow-sm">
+    <div class="flex justify-between items-center w-full px-8 py-4 max-w-[1200px] mx-auto">
+        <a class="font-headline-md text-headline-md font-bold text-on-surface" href="#">LIPSA SAHOO</a>
+        <div class="hidden md:flex gap-8 items-center">
+            <a class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold border-b-2 border-primary pb-1 transition-colors duration-300" href="#about">About</a>
+            <a class="font-label-md text-label-md uppercase tracking-wider text-on-secondary-fixed-variant hover:text-primary transition-colors duration-300" href="#experience">Experience</a>
+            <a class="font-label-md text-label-md uppercase tracking-wider text-on-secondary-fixed-variant hover:text-primary transition-colors duration-300" href="#skills">Skills</a>
+            <a class="font-label-md text-label-md uppercase tracking-wider text-on-secondary-fixed-variant hover:text-primary transition-colors duration-300" href="#projects">Projects</a>
+            <a class="font-label-md text-label-md uppercase tracking-wider text-on-secondary-fixed-variant hover:text-primary transition-colors duration-300" href="#contact">Contact</a>
+        </div>
+        <a href="Lipsa_Sahoo_BRM_Developer_Resume.docx" download class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider hover:bg-primary-container transition-all duration-200">
+            Download CV
+        </a>
+    </div>
+</nav>
+
+<!-- ========== HERO SECTION ========== -->
+<section class="pt-[160px] pb-section-padding-mobile md:pb-section-padding-desktop px-8 max-w-[1200px] mx-auto min-h-screen flex flex-col justify-center" id="about">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+        <div class="md:col-span-7 reveal-on-scroll">
+            <span class="text-primary font-label-md text-label-md uppercase tracking-[0.2em] mb-4 block">Oracle BRM Developer | Software Engineer</span>
+            <h1 class="font-display text-display-mobile md:text-display mb-8 text-on-surface leading-tight">Billing &amp; Revenue <br/><span class="text-primary italic">Architecture</span> at Scale.</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-10">
+                Software Engineer with <strong>4+ years of professional experience</strong> specializing in Oracle Billing and Revenue Management (BRM) development, customization, and integration. Proven expertise in building high-performance RESTful APIs, customizing BRM Policy Opcodes, configuring pricing in PDC, and implementing transaction-safe database pipelines.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-wider hover:bg-primary-container transition-all duration-300 shadow-sm flex items-center gap-2" href="#projects">
+                    View Projects <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </a>
+                <a class="border-2 border-on-background text-on-background px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-wider hover:bg-on-background hover:text-white transition-all duration-300 flex items-center gap-2" href="#contact">
+                    Let's Talk
+                </a>
+            </div>
+        </div>
+        <div class="md:col-span-5 reveal-on-scroll delay-200">
+            <div class="relative group">
+                <div class="absolute inset-0 bg-primary/10 rounded-2xl transform rotate-3 scale-105 transition-transform group-hover:rotate-6"></div>
+                <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-tertiary-fixed shadow-xl">
+                    <img class="w-full h-full object-cover" src="lipsa_profile_headshot.png" alt="Lipsa Sahoo - Oracle BRM Developer"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== EXPERIENCE SECTION ========== -->
+<section class="py-section-padding-mobile md:py-section-padding-desktop bg-surface-container-low" id="experience">
+    <div class="max-w-[1200px] mx-auto px-8">
+        <div class="mb-16 reveal-on-scroll">
+            <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Professional Experience</h2>
+            <div class="w-20 h-1.5 bg-primary rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-1 gap-12 relative">
+            <!-- Timeline Line -->
+            <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-outline-variant hidden md:block transform -translate-x-1/2"></div>
+
+            <!-- Exp 1: Covalense Digital (LEFT) -->
+            <div class="relative flex flex-col md:flex-row items-center md:justify-between group reveal-on-scroll">
+                <div class="hidden md:block w-5 h-5 bg-primary rounded-full absolute left-1/2 -translate-x-1/2 z-10 border-4 border-surface group-hover:scale-125 transition-transform"></div>
+                <div class="md:w-[45%] mb-8 md:mb-0">
+                    <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border-l-4 border-primary">
+                        <span class="text-primary font-label-md text-label-md block mb-2">MAY 2023 &mdash; PRESENT</span>
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-1">Software Developer (Oracle BRM)</h3>
+                        <p class="text-on-surface-variant font-body-md mb-4 italic">Covalense Digital Solutions Pvt. Ltd., Bengaluru</p>
+                        <ul class="space-y-2 font-body-md text-on-surface-variant">
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-2.5 flex-shrink-0"></span>Designed and developed highly scalable RESTful APIs using Spring Boot and Java PCM API (JPCM) for real-time customer billing integration.</li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-2.5 flex-shrink-0"></span>Customized BRM Policy Opcodes and standard Functional Modules (FMs) using C and JPCM for Verizon's mobile brands.</li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-2.5 flex-shrink-0"></span>Configured rates, discounts, and packages in Pricing Design Center (PDC) and synchronized configurations with ECE.</li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-2.5 flex-shrink-0"></span>Automated batch billing, invoicing, and collections by maintaining custom Shell and Perl scripts.</li>
+                            <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-2.5 flex-shrink-0"></span>Managed API builds, deployment testing, and configurations using Jenkins CI/CD.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="hidden md:block w-[45%]"></div>
+            </div>
+
+            <!-- Exp 2: Livedigital Technologies (RIGHT) -->
+            <div class="relative flex flex-col md:flex-row-reverse items-center md:justify-between group reveal-on-scroll">
+                <div class="hidden md:block w-5 h-5 bg-primary rounded-full absolute left-1/2 -translate-x-1/2 z-10 border-4 border-surface group-hover:scale-125 transition-transform"></div>
+                <div class="md:w-[45%] mb-8 md:mb-0">
+                    <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border-r-4 md:border-l-0 md:border-r-4 border-primary text-left md:text-right">
+                        <span class="text-primary font-label-md text-label-md block mb-2">APR 2022 &mdash; MAY 2023</span>
+                        <h3 class="font-headline-md text-headline-md text-on-surface mb-1">Associate Software Engineer</h3>
+                        <p class="text-on-surface-variant font-body-md mb-4 italic">Livedigital Technologies Pvt. Ltd., Bengaluru</p>
+                        <ul class="space-y-2 font-body-md text-on-surface-variant">
+                            <li class="flex items-start gap-2 md:flex-row-reverse"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-2.5 flex-shrink-0"></span>Developed backend RESTful services using Spring MVC and JDBC connecting upstream CRM systems to DB.</li>
+                            <li class="flex items-start gap-2 md:flex-row-reverse"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-2.5 flex-shrink-0"></span>Created DAO layers and service classes using Hibernate for telecom transaction data integrity.</li>
+                            <li class="flex items-start gap-2 md:flex-row-reverse"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-2.5 flex-shrink-0"></span>Wrote complex PL/SQL procedures, database triggers, and functions to support government cloud migration.</li>
+                            <li class="flex items-start gap-2 md:flex-row-reverse"><span class="w-1.5 h-1.5 bg-primary rounded-full mt-2.5 flex-shrink-0"></span>Supported deployment, troubleshooting, and tuning on Oracle WebLogic Application Server.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="hidden md:block w-[45%]"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== SKILLS SECTION (Bento Grid) ========== -->
+<section class="py-section-padding-mobile md:py-section-padding-desktop bg-surface" id="skills">
+    <div class="max-w-[1200px] mx-auto px-8">
+        <div class="text-center mb-16 reveal-on-scroll">
+            <span class="text-primary font-label-md text-label-md uppercase tracking-wider mb-2 block">Specializations</span>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">Precision Toolset</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 reveal-on-scroll">
+            <!-- Oracle BRM Stack & Customization -->
+            <div class="md:col-span-2 bg-surface-container p-10 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <span class="material-symbols-outlined text-primary text-4xl mb-6">database</span>
+                    <h3 class="font-headline-md text-headline-md mb-4">Oracle BRM &amp; Customization</h3>
+                    <p class="font-body-md text-on-surface-variant mb-8">Specialized in PCM C and Java PCM APIs, customizing policy opcodes, data dictionaries, and pricing models in Pricing Design Center (PDC) and Elastic Charging Engine (ECE).</p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg font-label-md text-label-md">Oracle BRM 12c/7.5</span>
+                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg font-label-md text-label-md">PDC</span>
+                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg font-label-md text-label-md">ECE</span>
+                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg font-label-md text-label-md">PCM C API</span>
+                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg font-label-md text-label-md">JPCM</span>
+                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-lg font-label-md text-label-md">Custom FMs</span>
+                </div>
+            </div>
+            <!-- Software Development -->
+            <div class="bg-surface-container-high p-10 rounded-2xl">
+                <span class="material-symbols-outlined text-primary text-4xl mb-6">code</span>
+                <h3 class="font-headline-md text-headline-md mb-4">Development</h3>
+                <ul class="space-y-3 font-label-md text-label-md uppercase tracking-wide text-on-surface-variant">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Java / J2EE</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Spring Boot</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Hibernate / JDBC</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> REST &amp; SOAP APIs</li>
+                </ul>
+            </div>
+            <!-- Databases & Scripting -->
+            <div class="bg-inverse-surface p-10 rounded-2xl text-inverse-on-surface">
+                <span class="material-symbols-outlined text-primary-fixed text-4xl mb-6">terminal</span>
+                <h3 class="font-headline-md text-headline-md mb-4">Databases &amp; Scripting</h3>
+                <p class="font-body-md opacity-80 mb-6">Writing high-performance PL/SQL procedures and shell scripts for system automation.</p>
+                <div class="flex flex-col gap-2 font-label-md text-label-md uppercase">
+                    <span>&bull; Oracle Database 19c/12c</span>
+                    <span>&bull; PL/SQL / SQL Triggers</span>
+                    <span>&bull; Unix / Linux Shell Scripting</span>
+                    <span>&bull; Perl Scripting</span>
+                </div>
+            </div>
+            <!-- Stats Bar -->
+            <div class="md:col-span-4 bg-primary text-on-primary p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="max-w-xl">
+                    <h3 class="font-headline-md text-headline-md mb-2">DevOps &amp; Infrastructure Tools</h3>
+                    <p class="font-body-md opacity-90">Jenkins CI/CD, Maven, Git, Postman, JMeter, Eclipse, WebLogic, Apache Tomcat. Experienced in telecom-grade automated billing deployments, GL reporting, and system configurations.</p>
+                </div>
+                <div class="flex gap-4">
+                    <div class="bg-white/10 px-6 py-4 rounded-xl text-center backdrop-blur-sm">
+                        <span class="block font-headline-lg text-headline-lg">4+</span>
+                        <span class="font-label-md text-label-md uppercase">Years Exp</span>
+                    </div>
+                    <div class="bg-white/10 px-6 py-4 rounded-xl text-center backdrop-blur-sm">
+                        <span class="block font-headline-lg text-headline-lg">2</span>
+                        <span class="font-label-md text-label-md uppercase">Telecom Giants</span>
+                    </div>
+                    <div class="bg-white/10 px-6 py-4 rounded-xl text-center backdrop-blur-sm">
+                        <span class="block font-headline-lg text-headline-lg">20%</span>
+                        <span class="font-label-md text-label-md uppercase">Latency Reduction</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== PROJECTS SECTION ========== -->
+<section class="py-section-padding-mobile md:py-section-padding-desktop bg-surface-bright" id="projects">
+    <div class="max-w-[1200px] mx-auto px-8">
+        <div class="flex justify-between items-end mb-16 reveal-on-scroll">
+            <div>
+                <span class="text-primary font-label-md text-label-md uppercase tracking-wider mb-2 block">Enterprise Integrations</span>
+                <h2 class="font-headline-lg text-headline-lg text-on-surface">Key Projects</h2>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+            <!-- Project 1: Verizon -->
+            <div class="group reveal-on-scroll">
+                <div class="relative overflow-hidden rounded-2xl bg-inverse-surface shadow-sm mb-6 p-8">
+                    <span class="material-symbols-outlined text-primary-fixed text-6xl mb-4">settings_input_component</span>
+                    <h3 class="font-headline-md text-headline-md text-white mb-3">Verizon Telecom API Gateway &amp; Billing Service</h3>
+                    <p class="font-body-md text-inverse-on-surface/80 mb-4">Developed the interface layer connecting Verizon's consumer applications (Simple Mobile, Straight Talk, etc.) to the Oracle BRM billing engine. Achieved transaction safety and reduced latency by 20%.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-2.5 py-1 bg-primary-fixed/15 text-primary-fixed-dim rounded-lg font-caption text-caption">JPCM API</span>
+                        <span class="px-2.5 py-1 bg-primary-fixed/15 text-primary-fixed-dim rounded-lg font-caption text-caption">Spring Boot</span>
+                        <span class="px-2.5 py-1 bg-primary-fixed/15 text-primary-fixed-dim rounded-lg font-caption text-caption">REST APIs</span>
+                        <span class="px-2.5 py-1 bg-primary-fixed/15 text-primary-fixed-dim rounded-lg font-caption text-caption">Jenkins</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://play.google.com/store/apps/details?id=com.vzw.hmy" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-store-android/10 text-store-android rounded-lg font-label-md text-caption hover:bg-store-android/20 transition-colors border border-store-android/20">
+                            <span class="material-symbols-outlined text-[16px]">play_arrow</span> Play Store
+                        </a>
+                        <a href="https://apps.apple.com/us/app/my-verizon/id416023011" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-store-ios/10 text-store-ios rounded-lg font-label-md text-caption hover:bg-store-ios/20 transition-colors border border-store-ios/20">
+                            <span class="material-symbols-outlined text-[16px]">phone_iphone</span> App Store
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: NT Thai -->
+            <div class="group reveal-on-scroll delay-100">
+                <div class="relative overflow-hidden rounded-2xl bg-surface-container shadow-sm mb-6 p-8 border border-outline-variant/30">
+                    <span class="material-symbols-outlined text-primary text-6xl mb-4">cloud_sync</span>
+                    <h3 class="font-headline-md text-headline-md text-on-surface mb-3">NT Thai Government Cloud Billing Migration</h3>
+                    <p class="font-body-md text-on-surface-variant mb-4">Contributed to the backend migration of municipal and IoT services onto a cloud-based billing repository, integrating WebLogic servers to handle subscriber transactions securely.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-2.5 py-1 bg-primary/10 text-primary rounded-lg font-caption text-caption">Java</span>
+                        <span class="px-2.5 py-1 bg-primary/10 text-primary rounded-lg font-caption text-caption">Hibernate</span>
+                        <span class="px-2.5 py-1 bg-primary/10 text-primary rounded-lg font-caption text-caption">WebLogic</span>
+                        <span class="px-2.5 py-1 bg-primary/10 text-primary rounded-lg font-caption text-caption">PL/SQL</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://eservice.ntplc.co.th" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-store-web/10 text-store-web rounded-lg font-label-md text-caption hover:bg-store-web/20 transition-colors border border-store-web/20">
+                            <span class="material-symbols-outlined text-[16px]">language</span> Web Portal
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========== EDUCATION SECTION ========== -->
+<section class="py-section-padding-mobile md:py-[80px] bg-surface-container-low">
+    <div class="max-w-[1200px] mx-auto px-8 reveal-on-scroll">
+        <div class="mb-12">
+            <span class="text-primary font-label-md text-label-md uppercase tracking-wider mb-2 block">Education</span>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">Academic Background</h2>
+        </div>
+        <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-primary flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Master of Computer Applications (M.C.A)</h3>
+                <p class="text-on-surface-variant font-body-md italic">Indira Gandhi Institute of Technology, Sarang</p>
+            </div>
+            <div class="flex gap-4 items-center">
+                <div class="bg-primary/10 px-4 py-2 rounded-lg text-center">
+                    <span class="block font-headline-md text-headline-md text-primary">9.20</span>
+                    <span class="font-caption text-caption text-on-surface-variant uppercase">CGPA</span>
+                </div>
+                <div class="bg-surface-container-high px-4 py-2 rounded-lg text-center">
+                    <span class="block font-label-md text-label-md text-on-surface">2019 &ndash; 2022</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== CONTACT SECTION ========== -->
+<section class="py-section-padding-mobile md:py-section-padding-desktop bg-inverse-surface text-inverse-on-surface" id="contact">
+    <div class="max-w-[1200px] mx-auto px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+            <div class="reveal-on-scroll">
+                <h2 class="font-display text-display-mobile md:text-display mb-8 text-white">Let's build <br/><span class="text-primary-fixed">something</span> remarkable.</h2>
+                <p class="font-body-lg text-body-lg opacity-80 mb-12 max-w-md">Open to billing software architecture discussions, enterprise solutions, and backend API engineering opportunities.</p>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-fixed/10 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary-fixed">mail</span>
+                        </div>
+                        <div>
+                            <span class="block font-label-md text-label-md uppercase opacity-50">Email</span>
+                            <a class="font-headline-md text-headline-md hover:text-primary-fixed transition-colors" href="mailto:lipsasahoo.199901@gmail.com">lipsasahoo.199901@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-fixed/10 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary-fixed">phone</span>
+                        </div>
+                        <div>
+                            <span class="block font-label-md text-label-md uppercase opacity-50">Phone</span>
+                            <a class="font-headline-md text-headline-md hover:text-primary-fixed transition-colors" href="tel:+917077463778">+91 7077463778</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-fixed/10 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary-fixed">location_on</span>
+                        </div>
+                        <div>
+                            <span class="block font-label-md text-label-md uppercase opacity-50">Base</span>
+                            <span class="font-headline-md text-headline-md">Bengaluru, India</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-10 rounded-2xl shadow-xl reveal-on-scroll delay-200">
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-8">Send a Message</h3>
+                <form class="space-y-8" onsubmit="event.preventDefault(); alert('Thank you for reaching out! I will get back to you soon.');">
+                    <div>
+                        <label class="font-label-md text-label-md text-on-surface-variant mb-2 block uppercase tracking-wider">Your Name</label>
+                        <input class="w-full bg-transparent border-0 border-b-2 border-outline-variant py-3 px-0 focus:ring-0 focus:border-primary text-on-surface font-body-md transition-colors" placeholder="Your name" type="text"/>
+                    </div>
+                    <div>
+                        <label class="font-label-md text-label-md text-on-surface-variant mb-2 block uppercase tracking-wider">Email Address</label>
+                        <input class="w-full bg-transparent border-0 border-b-2 border-outline-variant py-3 px-0 focus:ring-0 focus:border-primary text-on-surface font-body-md transition-colors" placeholder="your@email.com" type="email"/>
+                    </div>
+                    <div>
+                        <label class="font-label-md text-label-md text-on-surface-variant mb-2 block uppercase tracking-wider">Message</label>
+                        <textarea class="w-full bg-transparent border-0 border-b-2 border-outline-variant py-3 px-0 focus:ring-0 focus:border-primary text-on-surface font-body-md transition-colors resize-none" placeholder="Tell me about your project..." rows="4"></textarea>
+                    </div>
+                    <button class="w-full bg-primary text-on-primary py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest hover:bg-primary-container transition-all shadow-md" type="submit">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-surface-container-low w-full py-section-padding-mobile md:py-[80px]">
+    <div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-[1200px] mx-auto gap-8">
+        <div class="flex flex-col items-center md:items-start gap-4">
+            <span class="font-headline-md text-headline-md font-bold text-on-surface">LIPSA SAHOO</span>
+            <p class="font-body-md text-body-md text-on-surface-variant text-center md:text-left max-w-xs">
+                &copy; 2025 Lipsa Sahoo. Software Engineer specialized in Oracle BRM, based in Bengaluru, India.
+            </p>
+        </div>
+        <div class="flex gap-8">
+            <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300 opacity-80 hover:opacity-100" href="https://www.linkedin.com/in/lipsasahoo" target="_blank">LinkedIn</a>
+        </div>
+        <button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all duration-300" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <span class="material-symbols-outlined">arrow_upward</span>
+        </button>
+    </div>
+</footer>
+
+<!-- ========== SCRIPTS ========== -->
+<script>
+    // Intersection Observer for scroll animations
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, observerOptions);
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+    // Navigation Active State Tracking
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('text-primary', 'font-bold', 'border-b-2', 'border-primary', 'pb-1');
+            link.classList.add('text-on-secondary-fixed-variant');
+            if (link.getAttribute('href').includes(current) && current !== '') {
+                link.classList.add('text-primary', 'font-bold', 'border-b-2', 'border-primary', 'pb-1');
+                link.classList.remove('text-on-secondary-fixed-variant');
+            }
+        });
+    });
+</script>
+</body>
+</html>
